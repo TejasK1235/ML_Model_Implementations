@@ -73,18 +73,3 @@ This repository contains from-scratch implementations of common supervised learn
 - $IG = \text{MSE}_{\text{parent}} - \left( \frac{n_L}{n} \text{MSE}_L + \frac{n_R}{n} \text{MSE}_R \right)$
 
 ---
-
-## 🧪 Datasets Used
-- Synthetic data (classification/regression)
-- `sklearn.datasets` like breast cancer
-
----
-
-## 🛠 Technologies
-- Python 3
-- NumPy
-
----
-
-## 📎 License
-This project is licensed under the MIT License.
