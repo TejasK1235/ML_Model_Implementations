@@ -73,3 +73,13 @@ This repository contains from-scratch implementations of common supervised learn
 - $IG = \text{MSE}_{\text{parent}} - \left( \frac{n_L}{n} \text{MSE}_L + \frac{n_R}{n} \text{MSE}_R \right)$
 
 ---
+
+## 📊 K-Means Clustering
+
+### 📐 Euclidean Distance Formula
+
+Used to measure the distance between a data point and a centroid during clustering:
+
+\[
+d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+\]
