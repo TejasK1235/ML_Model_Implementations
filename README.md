@@ -80,7 +80,7 @@ This repository contains from-scratch implementations of common supervised learn
 
 Used to measure the distance between a data point and a centroid during clustering:
 
-```
-d(x, y) = √[ ∑ (xᵢ − yᵢ)² ]
-```
+$$
+d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+$$
 
