@@ -7,116 +7,80 @@ This repository contains from-scratch implementations of common supervised learn
 ## 📈 Linear Regression
 
 ### Gradient Descent Update Rules:
-- For each epoch:
-  $$
-  \hat{y} = X \cdot w + b
-  $$
-  $$
-  \frac{\partial J}{\partial w} = \frac{1}{m} \cdot X^T \cdot (\hat{y} - y)
-  $$
-  $$
-  \frac{\partial J}{\partial b} = \frac{1}{m} \cdot \sum (\hat{y} - y)
-  $$
-  $$
-  w := w - \alpha \cdot \frac{\partial J}{\partial w}
-  \quad
-  b := b - \alpha \cdot \frac{\partial J}{\partial b}
-  $$
+- Prediction: $\hat{y} = X \cdot w + b$
+- Gradient w.r.t. weights: $\frac{\partial J}{\partial w} = \frac{1}{m} \cdot X^T \cdot (\hat{y} - y)$
+- Gradient w.r.t. bias: $\frac{\partial J}{\partial b} = \frac{1}{m} \cdot \sum(\hat{y} - y)$
+- Parameter update:  
+  $w := w - \alpha \cdot \frac{\partial J}{\partial w}$  
+  $b := b - \alpha \cdot \frac{\partial J}{\partial b}$
 
 ### Evaluation Metrics:
-- Mean Squared Error (MSE):
-  $$
-  \text{MSE} = \frac{1}{m} \sum_{i=1}^m (\hat{y}_i - y_i)^2
-  $$
-- R² Score:
-  $$
-  R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
-  $$
+- Mean Squared Error (MSE):  
+  $\text{MSE} = \frac{1}{m} \sum_{i=1}^m (\hat{y}_i - y_i)^2$
+- R² Score:  
+  $R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$
 
 ---
 
-## 📉 Logistic Regression
+## 🤖 Logistic Regression
 
-### Sigmoid Activation:
-$$
-\sigma(z) = \frac{1}{1 + e^{-z}}
-$$
-
-### Gradient Descent Update Rules:
-- For each epoch:
-  $$
-  \hat{y} = \sigma(X \cdot w + b)
-  $$
-  $$
-  \frac{\partial J}{\partial w} = \frac{1}{m} \cdot X^T \cdot (\hat{y} - y)
-  $$
-  $$
-  \frac{\partial J}{\partial b} = \frac{1}{m} \cdot \sum (\hat{y} - y)
-  $$
+### Gradient Descent (Same as Linear Regression but with Sigmoid):
+- Linear combination: $z = X \cdot w + b$
+- Sigmoid activation: $\sigma(z) = \frac{1}{1 + e^{-z}}$
+- Prediction: $\hat{y} = \sigma(z)$
+- Loss gradient same as linear regression with $\hat{y} = \sigma(z)$
 
 ### Evaluation Metric:
-- Accuracy:
-  $$
-  \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total predictions}}
-  $$
+- Accuracy:  
+  $\text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total predictions}}$
 
 ---
 
-## 🧠 Naive Bayes Classifier
+## 🧠 Naive Bayes Classifier (Gaussian)
 
 ### Gaussian Probability Density Function:
-$$
-P(x_i | y) = \frac{1}{\sqrt{2\pi \cdot \sigma^2}} \cdot \exp\left( - \frac{(x_i - \mu)^2}{2 \cdot \sigma^2} \right)
-$$
+- $P(x_i | y) = \frac{1}{\sqrt{2 \pi \cdot \sigma^2}} \cdot \exp\left(-\frac{(x_i - \mu)^2}{2 \sigma^2}\right)$
 
-### Log Posterior Probability:
-$$
-\log P(y|x) \propto \log P(y) + \sum_{i=1}^{n} \log P(x_i | y)
-$$
+### Posterior Probability:
+- $\log P(y | x) \propto \log P(y) + \sum_i \log P(x_i | y)$
 
 ### Evaluation Metric:
-- Accuracy:
-  $$
-  \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total predictions}}
-  $$
+- Accuracy:  
+  $\text{Accuracy} = \frac{\text{Correct predictions}}{\text{Total predictions}}$
 
 ---
 
 ## 🌳 Decision Tree Classifier
 
 ### Entropy:
-$$
-H(y) = - \sum_{i=1}^{k} p_i \log_2(p_i)
-$$
+- $H(y) = -\sum p_i \log_2(p_i)$
 
 ### Information Gain:
-$$
-IG = H(\text{parent}) - \left( \frac{n_{left}}{n} H(\text{left}) + \frac{n_{right}}{n} H(\text{right}) \right)
-$$
+- $IG = H(y) - \left( \frac{n_L}{n} H(y_L) + \frac{n_R}{n} H(y_R) \right)$
 
 ### Evaluation Metric:
-- Accuracy:
-  $$
-  \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total predictions}}
-  $$
+- Accuracy:  
+  $\text{Accuracy} = \frac{\text{Correct predictions}}{\text{Total predictions}}$
 
 ---
 
 ## 🌲 Decision Tree Regressor
 
 ### Mean Squared Error (MSE):
-$$
-\text{MSE} = \frac{1}{m} \sum_{i=1}^m (y_i - \hat{y}_i)^2
-$$
+- $\text{MSE} = \frac{1}{n} \sum (y_i - \hat{y}_i)^2$
 
-### Information Gain (based on MSE):
-$$
-IG = \text{MSE(parent)} - \left( \frac{n_{left}}{n} \cdot \text{MSE(left)} + \frac{n_{right}}{n} \cdot \text{MSE(right)} \right)
-$$
+### Information Gain:
+- $IG = \text{MSE}_{\text{parent}} - \left( \frac{n_L}{n} \text{MSE}_L + \frac{n_R}{n} \text{MSE}_R \right)$
 
 ---
 
-## ✅ Summary
+## 📊 K-Means Clustering
 
-Each algorithm is implemented from scratch using NumPy only. For more details, check the corresponding `.py` files in this repository.
+### 📐 Euclidean Distance Formula
+
+Used to measure the distance between a data point and a centroid during clustering:
+
+$$
+d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+$$
 
